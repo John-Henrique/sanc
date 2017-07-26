@@ -1,0 +1,97 @@
+<configuracoes class="app-page"> 
+
+    <header class="header-bar grande">
+		<button class="btn icon icon-arrow-back pull-left show-for-phone-only" data-side-panel-id="side-panel-example"></button>
+		<button class="btn">Configurações</button>
+		<img src="img/logo-p.png" class="pull-right logo" />
+    </header>
+
+    <nav class="tabs header-tabs">
+        <div class="tab-items">
+            <a class="tab-item" >Perfil</a>
+            <a class="tab-item" >Áreas da vida</a>
+        </div>
+        <div class="tab-indicator"></div>
+    </nav>
+    <div class="content" data-tab-contents="true" data-disable-swipe="false" data-tab-default="1" >
+        <div class="tab-content">
+            <div class="padded-fulls">
+				
+				<div class="row">
+					<div class="large-6 tablet-6 phone-12 column">
+						<div class="padded-bottom text-center">
+							<img src="img/icon-user.png" class="perfil-foto padded-top borda" border="1" alt="avatar" style="background:url('img/fundo-menu.png') center center; border-radius:50%;" />
+						</div>
+						<div class="text-center padded-bottom">
+							<div class="text-center show-for-phone-only">
+								<button class="btn primary btn-logout facebook-logout">Encerrar sessão</button>
+							</div>
+							<div class="show-for-web-only">
+								<!--
+								  Below we include the Login Button social plugin. This button uses
+								  the JavaScript SDK to present a graphical Login button that triggers
+								  the FB.login() function when clicked.
+								-->
+								
+								<div class="show-for-web-only">
+									<div id="fb-root"></div>
+									<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"  onlogin="javascript:checkLoginState();"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="large-6 tablet-6 phone-12 column">
+						<ul class="list">
+							<li class="divider text-center">Altere estes dados na sua conta Facebook</li>
+							<li class="item-expanded">
+								<div class="item-content">
+									<span class="title">Nome</span>
+									<span class="body nome"></span>
+								</div>
+							</li>
+							<li class="item-expanded">
+								<div class="item-content">
+									<span class="title">Email</span>
+									<span class="body email"></span>
+								</div>
+							</li>
+							<li class="item-expanded">
+								<div class="item-content">
+									<span class="title">Idade</span>
+									<span class="body idade"></span>
+								</div>
+							</li>
+							<li class="item-expanded">
+								<div class="item-content">
+									<span class="title">Sexo</span>
+									<span class="body sexo"></span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				
+            </div>
+			
+			<div class="circle-progress">
+				<div class="spinner"></div>
+			</div>
+			
+        </div>
+        <div class="tab-content">
+            <div class="padded-fulls">
+				
+				<ul class="list config-areas-vida">
+				</ul>
+				
+				
+				<div class="circle-progress">
+					<div class="spinner"></div>
+				</div>
+				
+            </div>
+        </div>
+    </div>
+</configuracoes>

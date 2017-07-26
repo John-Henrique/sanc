@@ -1,0 +1,62 @@
+<login class="app-page"> 
+
+    <header class="header-bar grande">
+		<button class="btn icon icon-arrow-back pull-left show-for-phone-only" data-navigation="principal"></button>
+		<button class="btn">login</button>
+		<img src="img/logo-p.png" class="pull-right logo" />
+    </header>
+	
+	<div class="content padded-full ">
+	
+	
+		
+		<div class="row ">
+		</div>
+		
+		
+		<div class="padded-bottom text-center">
+			<img src="img/icon-user.png" class="perfil-foto padded-top borda" border="1" alt="avatar" style="background:url('img/fundo-menu.png') center center; border-radius:50%;" />
+			
+			<div class="status"></div>
+		</div>
+		
+		
+		<div class="padded-bottom text-center">
+			<p class="informacao">Para usar recursos avançados do Sanctvs, faça login usando sua conta do Facebook</p>
+			
+
+			<div class="show-for-web-only">
+			
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+<div class="show-for-web-only">
+	<div id="fb-root"></div>
+	<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="true"  onlogin="javascript:checkLoginState();"></div>
+</div>
+
+
+
+
+			</div>
+			
+			<button class="btn btn-facebook facebook-login transparente show-for-phone-only"></button>
+			
+			<button class="btn primary btn-logout facebook-logout esconde show-for-phone-only">Logout</button>
+			<p class="padded-top" style="display:none;">* Você precisa ter o app do Facebook instalado no seu celular</p>
+		</div>
+		
+		
+		
+		
+		<div class="circle-progress">
+			<div class="spinner"></div>
+		</div>
+		
+		
+	</div>
+</login>

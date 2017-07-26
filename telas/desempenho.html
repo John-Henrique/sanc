@@ -1,0 +1,44 @@
+<desempenho class="app-page"> 
+
+    <header class="header-bar grande">
+		<button class="btn icon icon-arrow-back pull-left show-for-phone-only" data-navigation="principal"></button>
+		<button class="btn icon icon-more-vert pull-right" data-popover-id="periodo"></button>
+		<button class="btn achaqui">Desempenho <span class="mes"></span><span class="ano"></span></button>
+		<img src="img/logo-p.png" class="pull-right logo esconde" />
+    </header>
+	
+	<div class="content padded-full">
+		
+		
+
+		<div class='canvas-container padded-top row' >
+			
+			<div class="large-12 tablet-12 phone-12 column padded-bottom">
+				<canvas id='desempenho' width='400' height='400'>carregando dados</canvas>
+			</div>
+			
+		</div>
+		
+		<div class='padded-top row' >
+				
+			<form class="large-6 tablet-6 phone-12 column text-center">
+				<select class='area1 text-center' style="width:120px;">
+				</select>
+			</form>
+			
+			<form class="large-6 tablet-6 phone-12 column text-center">
+				<select class='area2 text-center' style="width:120px;">
+				</select>
+			</form>
+			
+		</div>
+		
+		
+		
+		<div class="circle-progress center">
+			<div class="spinner"></div>
+		</div>
+		
+		
+	</div>
+</desempenho>

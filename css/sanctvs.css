@@ -1,0 +1,333 @@
+/*
+ * Custom CSS style for Phonon components
+ * It is also possible to use Stylus
+ * by changing values in _variables.styl
+ * then execute gulp css-all
+ */
+/*
+ * App Pages
+ */
+.app-page {
+  background-color: #fff;
+}
+/*
+ * Header Bars
+ */
+.header-bar {
+  background-color: #05C1B7;
+  background-image:url('../img/fundo-barra.png');
+}
+.header-bar .title {
+  color: #fff;
+}
+.header-bar .btn {
+  color: #fff;
+}
+/*
+ * Dialogs
+ */
+.dialog {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px #8a8a8a;
+}
+/*
+ * Tabs
+ */
+.tabs {
+  background-color: #fff;
+}
+.tabs .tab-items .tab-item {
+  color: #05C1B7;
+}
+.tabs .tab-indicator {
+  margin-bottom: -3px;
+  height: 3px;
+  background-color: #05C1B7;
+}
+/*
+ * Panels
+ */
+.panel,
+.panel-full {
+  background-color: #fff;
+}
+/*
+ * Side Panels
+ */
+.side-panel {
+  background-color: #333;
+}
+.side-panel .list li {
+  border-color: #444;
+}
+.side-panel .list a,
+.side-panel .list li,
+.side-panel .list .title,
+.side-panel .list .body {
+  color: #fff;
+}
+.side-panel .list a:active,
+.side-panel .list li:active,
+.side-panel .list .title:active,
+.side-panel .list .body:active {
+  background-color: item-background-active;
+}
+.side-panel .header-bar {
+  background-color: transparent;
+}
+.side-panel .header-bar .title {
+  color: side-panel-title-color;
+}
+.side-panel .header-bar .btn {
+  color: #fff;
+}
+.checkbox span,
+.radio span {
+  border: 2px solid #ddd;
+}
+.checkbox :checked + span,
+.radio :checked + span {
+  border-color: #05C1B7;
+}
+/*
+ * Preloaders
+ */
+.circle-progress {
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+}
+.circle-progress.active .spinner {
+  border-top: 3px solid #05C1B7;
+  border-right: 3px solid #05C1B7;
+  border-bottom: 3px solid #05C1B7;
+  border-left: 3px solid #eee;
+  -webkit-animation: circleLoading 900ms infinite linear;
+          animation: circleLoading 900ms infinite linear;
+}
+.circle-progress.primary .spinner {
+  border-top: 3px solid #05C1B7;
+  border-right: 3px solid #05C1B7;
+  border-bottom: 3px solid #05C1B7;
+}
+.circle-progress.negative .spinner {
+  border-top: 3px solid #f40b00;
+  border-right: 3px solid #f40b00;
+  border-bottom: 3px solid #f40b00;
+}
+.circle-progress.positive .spinner {
+  border-top: 3px solid #0ae700;
+  border-right: 3px solid #0ae700;
+  border-bottom: 3px solid #0ae700;
+}
+.progress {
+  height: 6px;
+}
+.progress .determinate {
+  background-color: #05C1B7;
+}
+.progress.primary .determinate {
+  background-color: #0067b5 !important;
+}
+.progress.negative .determinate {
+  background-color: #c20900 !important;
+}
+.progress.positive .determinate {
+  background-color: #08b500 !important;
+}
+/*
+ * Notifications
+ */
+.notification {
+  width: notification-width;
+  min-height: 48px;
+  line-height: 54px;
+  padding: 0 24px;
+  color: #fff;
+  background-color: #333;
+  -webkit-transform: translate3d(0, 72px, 0);
+          transform: translate3d(0, 72px, 0);
+  -webkit-transition: opacity 200ms, -webkit-transform 0.3s;
+  transition: opacity 200ms, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 200ms;
+  transition: transform 0.3s, opacity 200ms, -webkit-transform 0.3s;
+}
+.notification .btn {
+  top: 6px;
+  height: 42px;
+  line-height: 42px;
+}
+/*
+ * Colors
+ */
+.btn.primary,
+.btn.positive,
+.btn.negative {
+  color: #fff !important;
+}
+.primary {
+  background-color: #05C1B7 !important;
+}
+.primary.btn-flat {
+  color: #05C1B7 !important;
+  background-color: transparent !important;
+}
+.positive {
+  background-color: #0ae700 !important;
+}
+.positive.btn-flat {
+  color: #0ae700 !important;
+  background-color: transparent !important;
+}
+.negative {
+  background-color: #f40b00 !important;
+}
+.negative.btn-flat {
+  color: #f40b00 !important;
+  background-color: transparent !important;
+}
+.light-primary {
+  background-color: #b9d3e7 !important;
+}
+.light-positive {
+  background-color: #bbe7b9 !important;
+}
+.light-negative {
+  background-color: #f4c5c3 !important;
+}
+.dark-primary {
+  background-color: #0067b5 !important;
+}
+.dark-positive {
+  background-color: #08b500 !important;
+}
+.dark-negative {
+  background-color: #c20900 !important;
+}
+
+
+
+/**
+ * Menu lateral
+ */
+.side-panel .header-bar {
+	background:#333;
+	
+	background-image:url("../img/fundo-menu.png" );
+	background-position:left top;
+	
+	height:180px;
+	padding:20px 15px 15px 15px;
+    color:#fff;
+}
+.side-panel .header-bar p {
+	color:#fff;
+}
+.side-panel .content {
+	padding-top:185px;
+}
+.side-panel .list .divider {
+	height:5px;
+	min-height:5px;
+	background-color:#f1f1f1;
+}
+
+/**
+ * perfil no painel lateral
+ */
+.cartao_perfil {
+	height:180px;
+	padding:20px 15px 15px 15px;
+	background-color:#333;
+	display:table;
+	width:100%;
+	background-image:url("../img/fundo-menu.png" );
+	background-position:left top;
+    color:#fff;
+}
+.cartao_perfil h4 {
+	font-weight:bold;
+	margin-top:10px;
+}
+.cartao_perfil p {
+	color:#FFF;
+}
+.cartao_perfil img.borda {
+	width:75px;
+	height:75px;
+	border-radius:50%;
+}
+
+
+
+
+/**
+ * icones
+ */
+.icon-entrar:before {
+	content:url('../img/icon-entrar.png' );
+}
+.btn-facebook:before {
+	content:url('../img/btn-facebook.png' );
+}
+.icon-avaliacao:before {
+	content:url('../img/icon-avaliacao.png' );
+}
+.icon-desempenho:before {
+	content:url('../img/icon-desempenho.png' );
+}
+.icon-fatos:before {
+	content:url('../img/icon-fatos.png' );
+}
+.icon-metas:before {
+	content:url('../img/icon-metas.png' );
+}
+
+.transparente {
+	background-color:transparent !important;
+}
+.logo {
+	margin:0px;
+    margin-top: 7px;
+}
+
+
+/**
+rolagem das telas 
+avaliação
+*/
+/* definindo a altura 100% */
+.swiper-container {
+    height:85vh;
+}
+.swiper-button-next, .swiper-button-prev {
+	top:70%;
+}
+/* fixando a paginação no rodape */
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    position: fixed;
+}
+
+.esconde, .esconder {
+	display:none;
+}
+.questao-fato {
+	height:60%;
+	max-height:300px;
+}
+
+/**
+listas
+*/
+fatos .list li {
+	line-height: 30px;
+}
+
+/**
+ Graficos
+*/
+body canvas {
+	max-width:600px;
+	max-height:600px;
+}

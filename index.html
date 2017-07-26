@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+		<meta http-equiv="Content-Security-Policy" 
+				 content="default-src * gap://ready file:; 
+						  img-src * data:; 
+						  style-src * 'self' 'unsafe-inline'; 
+						  font-src * data:;
+						  script-src * 'unsafe-inline' 'unsafe-eval';">
+        <link rel="stylesheet" href="css/phonon.min.css" />
+        <link rel="stylesheet" href="css/lib/swiper.min.css" />
+        <link rel="stylesheet" href="css/sanctvs.css" />
+        <title>Sanctvs</title>
+    </head>
+    <body>
+	
+	
+	
+		
+		<div class="popover" id="periodo">
+			<ul class="list ">
+				<li><a id="ano" class="padded-list">Ano</a></li>
+				<li><a id="mes" class="padded-list">Mês</a></li>
+				<li><a id="semana" class="padded-list">Semana</a></li>
+				<li><a id="personalizado" class="padded-list">Personalizado</a></li>
+			</ul>
+		</div>
+	
+	
+	
+	
+		<div id="panel-comparar" class="panel">
+			<header class="header-bar">
+				<a class="btn icon icon-close pull-right" href="#" data-panel-close="true"></a>
+				<button class="btn achaqui">Comparar períodos</button>
+			</header>
+
+			<div class="content">
+				<div class="padded-full">
+					<p >
+						Selecione as datas para comparação
+					</p>
+					
+					<div class="row text-center">
+						<form class="large-6 tablet-6 phone-12 column">
+							<div class=" padded-full">
+								<select class='mes' style="width:120px;">
+									<option value='01'>Janeiro</option>
+									<option value='02'>Fevereiro</option>
+									<option value='03'>Março</option>
+									<option value='04'>Abril</option>
+									<option value='05'>Maio</option>
+									<option value='06'>Junho</option>
+									<option value='07'>Julho</option>
+									<option value='08'>Agosto</option>
+									<option value='09'>Setembro</option>
+									<option value='10'>Outubro</option>
+									<option value='11'>Novembro</option>
+									<option value='12'>Dezembro</option>
+								</select>
+								
+								<select class='ano' style="width:120px;">
+									<option value='2017'>2017</option>
+									<option value='2018'>2018</option>
+									<option value='2019'>2019</option>
+									<option value='2020'>2020</option>
+								</select>
+							</div>
+						</form>
+						
+						<form class="large-6 tablet-6 phone-12 column comparar">
+							<div class=" padded-full">
+								<select class='mes2 ' style="width:120px;">
+									<option value='0'>Mês</option>
+									<option value='01'>Janeiro</option>
+									<option value='02'>Fevereiro</option>
+									<option value='03'>Março</option>
+									<option value='04'>Abril</option>
+									<option value='05'>Maio</option>
+									<option value='06'>Junho</option>
+									<option value='07'>Julho</option>
+									<option value='08'>Agosto</option>
+									<option value='09'>Setembro</option>
+									<option value='10'>Outubro</option>
+									<option value='11'>Novembro</option>
+									<option value='12'>Dezembro</option>
+								</select>
+								
+								<select class='ano2' style="width:120px;">
+									<option value='0'>Ano</option>
+									<option value='2017'>2017</option>
+									<option value='2018'>2018</option>
+									<option value='2019'>2019</option>
+									<option value='2020'>2020</option>
+								</select>
+							</div>
+						</form>
+					</div>
+					
+					<div class="row esconde">
+						
+						<div class="large-12 tablet-12 phone-12 column text-center padded-full">
+							<select class='grafico-tipo' style="width:120px;">
+								<option value='doughnut'>Rosca</option>
+								<option value='pie'>Pizza</option>
+								<option value='bar'>Barra</option>
+								<option value='line'>Linha</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="row">
+						
+						<div class="large-12 tablet-12 phone-12 column text-center">
+							<button class="btn fit-parents primary comparar btn-comparar">Comparar datas</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+	
+	
+
+        <div class="side-panel side-panel-left" data-expose-aside="left" data-disable="right" data-page="principal,avaliacoes,adicionar,desempenho,fatos,sobre,configuracoes" id="side-panel-example">
+			<div class="cartao_perfil">
+				<button class="btn pull-right icon icon-close show-for-phone-only transparente with-circle fecha-painel"></button>
+				<img src="img/icon-user.png" class="borda perfil-foto" />
+				<h4 class="nome"></h4>
+				<p>SANCTVS | Avaliando minha Vida</p>
+			</div>
+			
+		
+
+            <div class="content">
+			
+			
+                <ul class="list">
+				
+				
+                    <li class="primeiro-li">
+						<a href="#!principal" class="pull-left icon icon-home btn-inicio"></a>
+						<a href="#!principal" class="padded-list btn-inicio">Minha vida</a>
+					</li>
+                    <li>
+						<a href="#!desempenho" class="pull-left icon icon-desempenho"></a>
+						<a href="#!desempenho" class="padded-list">Desempenho</a>
+					</li>
+                    <li>
+						<a href="#!avaliacoes" class="pull-left icon icon-avaliacao"></a>
+						<a href="#!avaliacoes" class="padded-list">Avaliações</a>
+					</li>
+                    <li>
+						<a href="#!fatos" class="pull-left icon icon-fatos"></a>
+						<a href="#!fatos" class="padded-list">Fatos relevantes</a>
+					</li>
+                    <li>
+						<a href="#!metas" class="pull-left icon icon-metas"></a>
+						<a href="#!metas" class="padded-list">Metas</a>
+					</li>
+					<!--
+                    <li>
+						<a href="#!login" class="pull-left icon icon-entrar"></a>
+						<a href="#!login" class="padded-list">Login / Criar conta</a>
+					</li>
+					-->
+                    <li class="divider"></li>
+                    <li>
+						<a href="#!configuracoes" class="pull-left icon icon-settings"></a>
+						<a href="#!configuracoes" class="padded-list">Configurações</a>
+					</li>
+                    <li>
+						<a href="#!sobre" class="pull-left icon icon-info-outline"></a>
+						<a href="#!sobre" class="padded-list">Sobre</a>
+					</li>
+				</ul>
+				
+				
+            </div>
+        </div>
+		
+		
+        
+        <principal 		data-page="true" data-nocache="false" data-loader="true"></principal>
+        <login 			data-page="true" data-loader="true"></login>
+		<avaliacoes 	data-page="true" data-loader="true"></avaliacoes>
+		<adicionar 		data-page="true" data-loader="true"></adicionar>
+		<fatos 			data-page="true" data-loader="true"></fatos>
+		<sobre 			data-page="true" data-loader="true"></sobre>
+		<desempenho 	data-page="true" data-loader="true"></desempenho>
+		<configuracoes 	data-page="true" data-loader="true"></configuracoes>
+		
+		
+        <!-- scripts -->
+        <script src="cordova.js"></script>
+        <script src="js/phonon.min.js"></script>
+        <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/lib/Chart.min.js"></script>
+        <script src="js/lib/swiper.min.js"></script>
+        <script src="js/facebook.js"></script>
+        <script src="js/facebook-web.js"></script>
+		
+		
+		
+        <script src="js/config.js"></script>
+        <script src="js/funcoes.js"></script>
+        <script src="js/eventos.js"></script>
+        <script src="js/compartilhar.js"></script>
+        <script src="js/consulta.js"></script>
+        <script src="js/avaliacoes.js"></script>
+        <script src="js/usuarios.js"></script>
+        <script src="js/fatos.js"></script>
+        <script src="js/areasvida.js"></script>
+        <script src="js/desempenho.js"></script>
+        <script src="js/configuracoes.js"></script>
+        <script src="js/firebase-notifications.js"></script>
+		
+        
+		
+		
+        <!-- our app config -->
+        <script src="app.js"></script>
+    </body>
+</html>
