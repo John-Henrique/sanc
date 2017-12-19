@@ -2,11 +2,11 @@ $(function(){
 	
 	config = {
 		
-		app_name: "Achaqui", 
+		app_name: "Sanctvs", 
 		
 		// URL para o servidor
 		//servidor: 'http://magrisolution.com.br',
-		servidor: 'http://sanctvs.net',
+		servidor: 'https://sanctvs.net',
 		
 		
 		init: function(){
@@ -44,12 +44,12 @@ $(function(){
 		app_id: function(){
 			
 			if( phonon.device.os == 'Android' ){
-				return "https://play.google.com/store/apps/details?id=br.com.johnhenrique.sanctus";
+				return "https://play.google.com/store/apps/details?id=br.com.johnhenrique.sanctvs";
 			}else if( phonon.device.os == "Ios" ){
-				return "br.com.johnhenrique.sanctus";
+				return "br.com.johnhenrique.sanctvs";
 			}else{
 				// qualquer outro sistema
-				return "br.com.johnhenrique.sanctus";
+				return "br.com.johnhenrique.sanctvs";
 			}
 		},
 		

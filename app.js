@@ -10,6 +10,27 @@ function removeElementsByClass(className){
 document.on( 'pageopened', function( evt ){
 	console.log( "Page opened "+ evt.detail.page );
 	removeElementsByClass('backdrop-panel');
+	
+	
+	/**
+	 * Atualizando tema
+	 * */
+	if( ( localStorage.getItem( 'tema' ) != undefined ) && ( localStorage.getItem( 'tema' ) != null ) ){
+		tema = localStorage.getItem( 'tema' );
+		
+		$( document ).find( '#css' ).prop( 'href', 'css/'+ tema +'.css' );
+		
+		/*
+		setTimeout( function( ){
+			// alterando logos
+			console.log( $( document ).find( '.logo' ).prop( 'img' ) );
+			$( document ).find( '.logo' ).prop( 'img', 'img/'+ tema +'/logo-p.png' );
+			$( document ).find( '.logo-g' ).prop( 'img', 'img/'+ tema +'/logo.png' );
+			
+			console.log( "SetTimeOut executado" );
+		}, 3000);
+		*/
+	};
 });
 
 
@@ -58,9 +79,9 @@ app.on({page:'principal', preventClose:false, content: 'principal.html', readDel
 	activity.onCreate(function(){
 		avaliacoes.init();
 		
-		d = new Date();
-		$( '.mes' ).val(d.getMonth());
-		$( '.ano' ).val(d.getFullYear());
+		d = moment();
+		$( '.mes' ).val(d.format( 'MM' ));
+		$( '.ano' ).val(d.format( 'YYYY' ));
 	});
 	
 	
@@ -85,6 +106,14 @@ app.on({page:'adicionar', preventClose:false, content: 'adicionar.html', readDel
 	
 	activity.onReady(function(){
 		
+		momento = moment();
+		dia = momento.format( 'DD' );
+		mes = momento.format( 'MM' );
+		ano = momento.format( 'YYYY' );
+		
+		$( 'adicionar .dias' ).text( dia );
+		$( 'adicionar .mes' ).text( mes );
+		$( 'adicionar .ano' ).text( ano );
 	});
 	
 	
@@ -96,6 +125,7 @@ app.on({page:'adicionar', preventClose:false, content: 'adicionar.html', readDel
 				$( 'adicionar .btn-salvar' ).data( 'dia', param_dia );
 			}
 			console.log( param_dia );
+			console.log( param_editar );
 			
 			
 			// informa o ID da avaliação para editar
@@ -131,6 +161,47 @@ app.on({page:'avaliacoes', preventClose:false, content: 'avaliacoes.html', readD
 });
 
 
+app.on({page:'metas', preventClose:false, content: 'metas.html', readDelay: 1}, function( activity ){
+	
+	activity.onCreate(function(){
+		metas.init();
+	});
+	
+	activity.onReady(function(){
+		metas.listar();
+	});
+	
+	
+	activity.onHidden(function(){
+		
+	});
+});
+
+
+app.on({page:'detalhes', preventClose:false, content: 'detalhes.html', readDelay: 1}, function( activity ){
+	var meta_id = 0;
+	
+	activity.onCreate(function(){
+		metas.init();
+	});
+	
+	activity.onHashChanged(function( param_meta_id ){
+		meta_id = param_meta_id;
+	});
+	
+	activity.onReady(function(){
+		metas.detalhes( meta_id );
+		
+		$( '.meta_id' ).val( meta_id );
+	});
+	
+	
+	activity.onHidden(function(){
+		
+	});
+});
+
+
 
 app.on({page:'login', preventClose:false, content: 'login.html', readDelay: 1}, function( activity ){
 	
@@ -147,6 +218,12 @@ app.on({page:'login', preventClose:false, content: 'login.html', readDelay: 1}, 
 	
 	activity.onReady(function(){
 		
+		if( sessionStorage.getItem( 'login-load' ) == null ){
+			document.location.href='./index.html';
+			
+			sessionStorage.setItem( 'login-load', 1 );
+		}
+		
 		// evitando problemas com o carregamento do plugin
 		document.addEventListener( "deviceready", function(){
 			//facebook.facebookStatus()//facebook.js
@@ -155,6 +232,9 @@ app.on({page:'login', preventClose:false, content: 'login.html', readDelay: 1}, 
 	
 	
 	activity.onHidden(function(){
+		console.log( 'saindo do login' );
+		
+		sessionStorage.removeItem( 'login-load' );
 		
 		avatar = localStorage.getItem( 'avatar' );
 		//console.log( avatar );
@@ -200,20 +280,19 @@ app.on({page:'configuracoes', preventClose:false, content: 'configuracoes.html',
 	
 	activity.onCreate(function(){
 		
-		$( '.sexo' ).text( sessionStorage.getItem( 'sexo' ) );
-		$( '.email' ).text( sessionStorage.getItem( 'email' ) );
-		
-		nascimento = sessionStorage.getItem( 'nascimento' );
-		idade = ( nascimento != null)? parseInt( nascimento.substring( nascimento.length, 6 ) - new Date().getFullYear() ):"Não informado";
-		
-		$( '.idade' ).text( idade );
-		
-		
 		configuracoes.init();
 	});
 	
 	
 	activity.onReady(function(){
+		
+		if( sessionStorage.getItem( 'login-load' ) == null ){
+			document.location.href='./index.html#!configuracoes';
+			
+			sessionStorage.setItem( 'login-load', 1 );
+		}
+		
+		
 		configuracoes.areas_vida();
 		
 		
@@ -223,6 +302,25 @@ app.on({page:'configuracoes', preventClose:false, content: 'configuracoes.html',
 		if( ( avatar != '' ) && ( avatar != null ) ){
 			$( 'img.perfil-foto' ).prop( 'src', avatar );
 		}
+		
+
+		$( '.nome' ).text( localStorage.getItem( 'nome' ) );
+		$( '.sexo' ).text( localStorage.getItem( 'sexo' ) );
+		$( '.email' ).text( localStorage.getItem( 'email' ) );
+		
+		nascimento = localStorage.getItem( 'nascimento' );
+		idade = ( nascimento != null)? parseInt( new Date().getFullYear() - nascimento.substring( nascimento.length, 6 ) ):"Não informado";
+		
+		$( '.idade' ).text( idade );
+		
+		console.log( "exibindo dados" );
+	});
+	
+	
+	activity.onHidden(function(){
+		console.log( 'saindo do configuracoes' );
+		
+		sessionStorage.removeItem( 'login-load' );
 	});
 });
 

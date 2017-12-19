@@ -2,17 +2,20 @@
  * Verificando se estamos no modo 
  * web ou mobile
  * */
-if (document.querySelector('.web') !== null) {
+//if (document.querySelector('.web') !== null) {
 	
+setTimeout( function(){
 	
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8&appId=1934179150192407";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.8&appId=1934179150192407";
+	  fjs.parentNode.insertBefore(js, fjs);
+	  
+			console.log( "facebook-jssdk" );
+	}(document, 'script', 'facebook-jssdk'));
+},1000);
 
 	
 
@@ -36,6 +39,8 @@ function statusChangeCallback( response ){
 	  } else {
 		// The person is not logged into this app or we are unable to tell. 
 		console.log( "não logado" );
+		encerra_sessao();
+		phonon.navigator().changePage( "login" );
 		//login();
 	  }
 	//});
@@ -59,6 +64,29 @@ function login(){
 console.log( "facebook-web.js");
 
 
+function encerra_sessao(){
+
+	phonon.notif( "Desconectado com sucesso", 3000, false );
+	
+	localStorage.removeItem( 'accessToken' );
+	localStorage.removeItem( 'sessionKey' );
+	localStorage.removeItem( 'sig' );
+	localStorage.removeItem( 'secret' );
+	localStorage.removeItem( 'userID' );
+	localStorage.removeItem( 'avatar' );
+	
+	
+	// remove dados da sessão
+	usuarios.logout();
+	
+	// esconde o botão
+	$( '.facebook-login, .facebook-login-status' ).show();
+	$( '.facebook-logout' ).hide();
+	$( '.nome, .status' ).text( "Desconectado" );
+	$( 'img.perfil-foto' ).prop( 'src', 'img/icon-user.png' );
+	$( '.informacao' ).text( "Para usar recursos avançados do achaqui, faça login usando sua conta do Facebook." );
+}
+
 
 function logout(){
     FB.getLoginStatus(function(response) {
@@ -67,26 +95,7 @@ function logout(){
 			FB.logout(function( response ){
 				
 				//console.log( "desconectado" );
-				
-				phonon.notif( "Desconectado com sucesso", 3000, false );
-				
-				localStorage.removeItem( 'accessToken' );
-				localStorage.removeItem( 'sessionKey' );
-				localStorage.removeItem( 'sig' );
-				localStorage.removeItem( 'secret' );
-				localStorage.removeItem( 'userID' );
-				localStorage.removeItem( 'avatar' );
-				
-				
-				// remove dados da sessão
-				usuarios.logout();
-				
-				// esconde o botão
-				$( '.facebook-login, .facebook-login-status' ).show();
-				$( '.facebook-logout' ).hide();
-				$( '.nome, .status' ).text( "Desconectado" );
-				$( 'img.perfil-foto' ).prop( 'src', 'img/icon-user.png' );
-				$( '.informacao' ).text( "Para usar recursos avançados do achaqui, faça login usando sua conta do Facebook." );
+				encerra_sessao();
 			});
         }
     });
@@ -128,7 +137,7 @@ function testAPI() {
 				
 				window.usuario['accessToken']	= objeto.authResponse.accessToken;
 				window.usuario['userID']		= objeto.authResponse.userID;
-				window.usuario['avatar']		= 'http://graph.facebook.com/'+ objeto.authResponse.userID +'/picture?width=128&height=128';
+				window.usuario['avatar']		= '//graph.facebook.com/'+ objeto.authResponse.userID +'/picture?width=128&height=128';
 				
 				// verificando se este usuário existe no banco de dados
 				usuarios.login( window.usuario );
@@ -172,4 +181,4 @@ function testAPI() {
 	});
 	
 	
-}// if web
+//}// if web

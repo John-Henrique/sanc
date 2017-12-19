@@ -36,6 +36,43 @@ $(function(){
 			
 		},
 		
+
+		/**
+		 * Limpar campos existentes 
+		 * no formulário
+		 * */
+		limpar_campos: function( elemento ){
+			//console.log( 'iniciando limpeza de campos' );
+			elem = $( elemento +' .content' ).find( 'input, select, textarea' );
+			
+			$.each( elem, function( index, valor ){
+				
+				campo = $( valor );
+
+				//console.log( campo.prop( 'type' ) );
+				
+				switch( campo.prop( 'type' ) ){
+					case "radio":
+					case "checkbox":
+						campo.prop( 'checked', false );
+					break;
+					
+					case "select-one":
+						//console.log( "select-one " );
+						//console.log( campo );
+						campo.find( 'option:first' ).prop( 'selected', true );
+					break;
+					
+					default:
+						campo.val( '' );
+				}
+				
+			});
+			
+			console.log( 'finalizando limpeza de campos' );
+			$( '#exibe-imagem' ).prop( 'src', 'img/padrao.png' );
+		},
+		
 		
 		ver: function( post_id ){
 			
@@ -116,15 +153,17 @@ $(function(){
 						
 					}// fim do if elem.prop( 'name' )
 				});
+				
 			});
 			
 			
-			console.log( respostas );
 			
 			consulta.send( '/areasvida/add', {campos:respostas}, function( retorno ){
 				
 				phonon.notif( retorno, 3000, false );
 				console.log( retorno );
+				
+				areasvida.limpar_campos( 'adicionar' );
 				
 				phonon.navigator().changePage( 'principal' );
 			}, function(erro){
@@ -257,38 +296,52 @@ $(function(){
 			html +='		';
 			html +='		<div class="padded-top"></div>';
 			html +='		';
+			
+			
+			area.nome = area.nome.replace( 'ú', 'u' );
+			area.nome = area.nome.replace( ' ', '-' );
+			area.nome = area.nome.replace( ' ', '-' );
+			area.nome = area.nome.replace( ' ', '-' );
+			area.nome = area.nome.replace( ' ', '-' );
+			area.nome = area.nome.replace( ' ', '-' );
+			area.nome = area.nome.replace( ' ', '-' );
+			area.nome = area.nome.replace( 'í', 'i' );
+			
+			//console.log( area.nome );
+			
+			
 			html +='		<ul class="list">';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="1" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="1" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Péssimo</span>';
 			html +='				</label>';
 			html +='			</li>';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="2" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="2" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Ruim</span>';
 			html +='				</label>';
 			html +='			</li>';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="3" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="3" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Regular</span>';
 			html +='				</label>';
 			html +='			</li>';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="4" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="4" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Bom</span>';
 			html +='				</label>';
 			html +='			</li>';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="5" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="5" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Ótimo</span>';
 			html +='				</label>';
@@ -313,7 +366,10 @@ $(function(){
 			}
 			
 			
-			consulta.query( '/areasvida/listar', {mes:jQuery( '.mes' ).val(),ano:jQuery( '.ano' ).val(),mes2:jQuery( '.mes2' ).val(),ano2:jQuery( '.ano2' ).val()}, function( retorno ){
+					console.log( 'Grafico areas vida' );
+					
+					
+			consulta.query( '/areasvida/listar', {mes:jQuery( 'principal .mes' ).val(),ano:jQuery( 'principal .ano' ).val(),mes2:jQuery( 'principal .mes2' ).val(),ano2:jQuery( 'principal .ano2' ).val()}, function( retorno ){
 				//console.log( retorno );
 				
 				if( retorno.periodo1.labels.length != 0 ){

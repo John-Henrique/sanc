@@ -13,7 +13,7 @@ $(function(){
 			
 			
 			localStorage.setItem( 'nome', 		data.nome );
-			localStorage.setItem( 'sexo', 		data.sexo );
+			localStorage.setItem( 'sexo', 		(data.sexo == 'male')?"Masculino":"Feminino" );
 			localStorage.setItem( 'nascimento', data.nascimento );
 			localStorage.setItem( 'email', 		data.email );
 			localStorage.setItem( 'first_name', data.first_name );

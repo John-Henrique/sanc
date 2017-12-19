@@ -14,11 +14,14 @@ $(function(){
 				url = strUrl;
 			}
 			
+			console.log( url );
+			console.log( jsonData );
+			
 			$.ajax({
 				url: url,
 				type: "GET", 
 				data: jsonData,
-				timeout: 10000
+				timeout: 30000
 			}).done( function(response) {
 					
 				phonon.preloader( ".circle-progress" ).hide();

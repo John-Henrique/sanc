@@ -7,6 +7,8 @@ $(function(){
 			console.log( "avaliacoes.js" );
 			
 			$( 'principal .mes, principal .ano' ).on( 'change', function(){
+				
+				console.log( "Alterando mes");
 				avaliacoes.grafico();
 			});
 			
@@ -130,17 +132,22 @@ $(function(){
 			});
 			
 			
-			console.log( respostas );
+			//console.log( respostas );
 			
 			consulta.send( '/avaliacoes/add', {campos:respostas}, function( retorno ){
 				
 				phonon.notif( retorno, 3000, false );
 				console.log( retorno );
 				
-				phonon.navigator().changePage( 'principal' );
+				// move para o primeiro slide da lista
+				mySwiper.slideTo( 0 );
+				
+					areasvida.limpar_campos( 'adicionar' );
+					
+					phonon.navigator().changePage( 'principal' );
 			}, function(erro){
 				phonon.notif( erro, 10000, false );
-				console.log( erro );
+				//console.log( erro );
 			});
 			
 		},
@@ -152,19 +159,28 @@ $(function(){
 			
 			d = new Date();
 			dia = d.getDate();
-			mes = d.getMonth();
 			
-			mes = ( mes < 10 )? '0'+ mes:mes; // caso o mês seja menor que 10
+			momento = moment();
+			dia = momento.format( 'DD' );
+			mes = momento.format( 'MM' );
+			ano = momento.format( 'YYYY' );
+			
+			$( 'avaliacoes .dias' ).text( dia );
+			$( 'avaliacoes .mes' ).text( mes );
+			$( 'avaliacoes .ano' ).text( ano );
 			
 			html = '<li class="divider text-center">Avaliações recentes</li>';
 			
 			for(i=dia;i >= 1;i--){
 				
+				
+				//console.log( momento.format( 'M' ) );
+				
 				dia = ( i < 10 )? '0'+i:i; // caso o dia seja menor que 10
 				
 				html += '<li>';
 				html += '	<a href="#!adicionar/'+ dia +'" class="pull-right icon icon-add"></a>';
-				html += '	<a href="#!adicionar/'+ dia +'" class="padded-list dia-'+ dia +'">'+ dia +'/'+ mes +'</a>';
+				html += '	<a href="#!adicionar/'+ dia +'" class="padded-list dia-'+ dia +'">'+ dia +'/'+ mes+'</a>';
 				html += '</li>';
 				
 			};
@@ -229,46 +245,54 @@ $(function(){
 		},
 		
 		
+		
+		/// o que está em uso é areasvida.js
 		html:function( area ){
+			
+			area.nome = area.nome.replace( 'ú', 'u' );
+			area.nome = area.nome.replace( ' ', '-' );
+			area.nome = area.nome.replace( 'í', 'i' );
+			
+			console.log( area.nome );
 			
 			html  ='';
 			html +='	<div class="questao swiper-slide">';
-			html +='		<h2 class="text-center" >'+ area.nome +'</h2>';
+			html +='		<h2 class="text-center" >'+ area.nome +'s</h2>';
 			html +='		';
 			html +='		<div class="padded-top"></div>';
 			html +='		';
 			html +='		<ul class="list">';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="1" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="1" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Péssimo</span>';
 			html +='				</label>';
 			html +='			</li>';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="2" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="2" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Ruim</span>';
 			html +='				</label>';
 			html +='			</li>';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="3" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="3" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Regular</span>';
 			html +='				</label>';
 			html +='			</li>';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="4" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="4" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Bom</span>';
 			html +='				</label>';
 			html +='			</li>';
 			html +='			<li class="padded-for-list">';
 			html +='				<label class="radio">';
-			html +='					<input type="radio" name="'+ area.nome.replace( 'í', 'i' ) +'" value="5" class="questao-'+ area.id +' campo">';
+			html +='					<input type="radio" name="'+ area.nome +'" value="5" class="questao-'+ area.id +' campo">';
 			html +='					<span></span>';
 			html +='					<span class="text" >Ótimo</span>';
 			html +='				</label>';
@@ -278,7 +302,7 @@ $(function(){
 			html +='	</div>';
 			html +='	';
 			
-			return html;
+			//return html;
 		},
 		
 		
@@ -291,8 +315,10 @@ $(function(){
 				graficoTipo = tipo;
 			}
 			
-			
-			consulta.query( '/avaliacoes/listar', {mes:jQuery( '.mes' ).val(),ano:jQuery( '.ano' ).val(),mes2:jQuery( '.mes2' ).val(),ano2:jQuery( '.ano2' ).val()}, function( retorno ){
+					console.log( 'Grafico avaliacoes' );
+					console.log( {mes:jQuery( 'principal .mes' ).val(),ano:jQuery( 'principal .ano' ).val(),mes2:jQuery( '#panel-comparar .mes2' ).val(),ano2:jQuery( '#panel-comparar .ano2' ).val()} );
+
+			consulta.query( '/avaliacoes/listar', {author:localStorage.getItem( 'user_id' ),mes:jQuery( 'principal .mes' ).val(),ano:jQuery( 'principal .ano' ).val(),mes2:jQuery( '#panel-comparar .mes2' ).val(),ano2:jQuery( '#panel-comparar .ano2' ).val()}, function( retorno ){
 				//console.log( retorno );
 				
 				if( retorno.periodo1.labels.length != 0 ){
@@ -386,6 +412,7 @@ $(function(){
 					},300);
 				}else{
 					$( '#areas-vida' ).slideUp( 'fast' );
+					phonon.notif( 'Não há dados para este período', 3000, true );
 				}
 				
 			}, function( erro ){

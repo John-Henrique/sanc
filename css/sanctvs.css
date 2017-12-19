@@ -261,7 +261,6 @@
 
 
 
-
 /**
  * icones
  */
@@ -283,7 +282,15 @@
 .icon-metas:before {
 	content:url('../img/icon-metas.png' );
 }
-
+.icon-logo-p:before {
+	content:url('../img/logo-p.png' );
+}
+.icon-logo-p {
+	padding-top:8px !important;
+}
+.icon-logo-g:before, .logo-g {
+	content:url('../img/logo.png' );
+}
 .transparente {
 	background-color:transparent !important;
 }
@@ -330,4 +337,14 @@ fatos .list li {
 body canvas {
 	max-width:600px;
 	max-height:600px;
+}
+
+/**
+	METAS
+*/
+.nota {
+	width:60px;
+}
+metas a {
+	color:#999;
 }

@@ -1,0 +1,161 @@
+
+/*
+ * Header Bars
+ */
+.header-bar {
+  background-color: #A5CE48;
+  background-image:url('../img/tema-2/fundo-barra.png');
+}
+/*
+ * Dialogs
+ */
+.dialog {
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px #8a8a8a;
+}
+.tabs .tab-items .tab-item {
+  color: #A5CE48;
+}
+.tabs .tab-indicator {
+  margin-bottom: -3px;
+  height: 3px;
+  background-color: #A5CE48;
+}
+.checkbox :checked + span,
+.radio :checked + span {
+  border-color: #A5CE48;
+}
+/*
+ * Preloaders
+ */
+.circle-progress {
+  width: 36px;
+  height: 36px;
+  margin-left: -18px;
+}
+.circle-progress.active .spinner {
+  border-top: 3px solid #A5CE48;
+  border-right: 3px solid #A5CE48;
+  border-bottom: 3px solid #A5CE48;
+  border-left: 3px solid #eee;
+  -webkit-animation: circleLoading 900ms infinite linear;
+          animation: circleLoading 900ms infinite linear;
+}
+.circle-progress.primary .spinner {
+  border-top: 3px solid #A5CE48;
+  border-right: 3px solid #A5CE48;
+  border-bottom: 3px solid #A5CE48;
+}
+.circle-progress.negative .spinner {
+  border-top: 3px solid #f40b00;
+  border-right: 3px solid #f40b00;
+  border-bottom: 3px solid #f40b00;
+}
+.circle-progress.positive .spinner {
+  border-top: 3px solid #0ae700;
+  border-right: 3px solid #0ae700;
+  border-bottom: 3px solid #0ae700;
+}
+.progress .determinate {
+  background-color: #A5CE48;
+}
+.progress.primary .determinate {
+  background-color: #0067b5 !important;
+}
+.progress.negative .determinate {
+  background-color: #c20900 !important;
+}
+.progress.positive .determinate {
+  background-color: #08b500 !important;
+}
+/*
+ * Colors
+ */
+.btn.primary,
+.btn.positive,
+.btn.negative {
+  color: #fff !important;
+}
+.primary {
+  background-color: #A5CE48 !important;
+}
+.primary.btn-flat {
+  color: #A5CE48 !important;
+  background-color: transparent !important;
+}
+.positive {
+  background-color: #0ae700 !important;
+}
+.positive.btn-flat {
+  color: #0ae700 !important;
+  background-color: transparent !important;
+}
+.negative {
+  background-color: #f40b00 !important;
+}
+.negative.btn-flat {
+  color: #f40b00 !important;
+  background-color: transparent !important;
+}
+.light-primary {
+  background-color: #b9d3e7 !important;
+}
+.light-positive {
+  background-color: #bbe7b9 !important;
+}
+.light-negative {
+  background-color: #f4c5c3 !important;
+}
+.dark-primary {
+  background-color: #0067b5 !important;
+}
+.dark-positive {
+  background-color: #08b500 !important;
+}
+.dark-negative {
+  background-color: #c20900 !important;
+}
+
+
+
+/**
+ * Menu lateral
+ */
+.side-panel .header-bar {
+	background:#333;
+	
+	background-image:url("../img/tema-2/fundo-menu.png" );
+	background-position:left top;
+	
+	height:180px;
+	padding:20px 15px 15px 15px;
+    color:#fff;
+}
+/**
+ * perfil no painel lateral
+ */
+.cartao_perfil {
+	height:180px;
+	padding:20px 15px 15px 15px;
+	background-color:#333;
+	display:table;
+	width:100%;
+	background-image:url("../img/tema-2/fundo-menu.png" );
+	background-position:left top;
+    color:#fff;
+}
+
+.icon-logo-p:before {
+	content:url('../img/tema-2/logo-p.png' );
+}
+.icon-logo-p {
+	padding-top:8px !important;
+}
+.icon-logo-g:before, .logo-g {
+	content:url('../img/tema-2/logo.png' );
+}
+.perfil-foto {
+	background:url('img/tema-2/fundo-menu.png') center center;
+	border-radius:50%;
+}

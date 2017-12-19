@@ -13,12 +13,14 @@
         <link rel="stylesheet" href="css/phonon.min.css" />
         <link rel="stylesheet" href="css/lib/swiper.min.css" />
         <link rel="stylesheet" href="css/sanctvs.css" />
+        <link rel="stylesheet" id="css" />
         <title>Sanctvs</title>
+		
     </head>
     <body>
 	
-	
-	
+		
+		
 		
 		<div class="popover" id="periodo">
 			<ul class="list ">
@@ -126,7 +128,7 @@
 	
 	
 
-        <div class="side-panel side-panel-left" data-expose-aside="left" data-disable="right" data-page="principal,avaliacoes,adicionar,desempenho,fatos,sobre,configuracoes" id="side-panel-example">
+        <div class="side-panel side-panel-left" data-expose-aside="left" data-disable="right" data-page="principal,avaliacoes,adicionar,desempenho,fatos,sobre,detalhes,metas,configuracoes" id="side-panel-example">
 			<div class="cartao_perfil">
 				<button class="btn pull-right icon icon-close show-for-phone-only transparente with-circle fecha-painel"></button>
 				<img src="img/icon-user.png" class="borda perfil-foto" />
@@ -189,6 +191,8 @@
         <login 			data-page="true" data-loader="true"></login>
 		<avaliacoes 	data-page="true" data-loader="true"></avaliacoes>
 		<adicionar 		data-page="true" data-loader="true"></adicionar>
+		<metas		 	data-page="true" data-loader="true"></metas>
+		<detalhes	 	data-page="true" data-loader="true"></detalhes>
 		<fatos 			data-page="true" data-loader="true"></fatos>
 		<sobre 			data-page="true" data-loader="true"></sobre>
 		<desempenho 	data-page="true" data-loader="true"></desempenho>
@@ -199,10 +203,11 @@
         <script src="cordova.js"></script>
         <script src="js/phonon.min.js"></script>
         <script src="js/jquery-3.1.1.min.js"></script>
+        <script src="js/lib/moment.min.js"></script>
         <script src="js/lib/Chart.min.js"></script>
         <script src="js/lib/swiper.min.js"></script>
         <script src="js/facebook.js"></script>
-        <script src="js/facebook-web.js"></script>
+        <script src="js/facebook-web.js" id="facebook-web"></script>
 		
 		
 		
@@ -214,11 +219,14 @@
         <script src="js/avaliacoes.js"></script>
         <script src="js/usuarios.js"></script>
         <script src="js/fatos.js"></script>
+        <script src="js/metas.js"></script>
         <script src="js/areasvida.js"></script>
         <script src="js/desempenho.js"></script>
         <script src="js/configuracoes.js"></script>
         <script src="js/firebase-notifications.js"></script>
-		
+		<!--
+        <script src="js/onesignal-notifications.js"></script>
+		-->
         
 		
 		
